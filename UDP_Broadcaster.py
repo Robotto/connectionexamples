@@ -21,7 +21,7 @@ def transmit():
 
     while True:
 
-        tx = input("What to send?").strip().encode()  # convert bytes to string
+        tx = input("What to send?").strip().encode()  # convert string to bytes
         transmitter.sendto(tx,broadcast_addr)
 
 
