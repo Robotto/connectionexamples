@@ -2,6 +2,12 @@ import socket
 from IPy import IP
 
 def listen():
+    hostname = socket.gethostname()
+    IPAddr = socket.gethostbyname(hostname)
+
+    print("Your Computer Name is:" + hostname)
+    print("Your Computer IP Address is:" + IPAddr)
+
     # create a socket object
     listener = socket.socket(socket.AF_INET, socket.SOCK_DGRAM, socket.IPPROTO_UDP)  # UDP
 

@@ -1,11 +1,15 @@
 #!/usr/bin/env python3
 #KILDE: https://gist.github.com/ferstar/c112f6aeb9dd47727ac6
+import socket
 import socketserver, subprocess, sys
+from ipaddress import IPv4Address
 from threading import Thread
 from pprint import pprint
 import json
 
-HOST = 'localhost'
+
+HOST = socket.gethostname()
+Addr = socket.gethostbyname(HOST)
 PORT = 9527
 
 class SingleTCPHandler(socketserver.BaseRequestHandler):
@@ -31,6 +35,7 @@ class SimpleServer(socketserver.ThreadingMixIn, socketserver.TCPServer):
 
 if __name__ == "__main__":
     server = SimpleServer((HOST, PORT), SingleTCPHandler)
+    print(f'Listening on {Addr} port {PORT}')
     # terminate with Ctrl-C
     try:
         server.serve_forever()
