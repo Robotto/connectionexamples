@@ -11,6 +11,8 @@ import json
 HOST = socket.gethostname()
 Addr = socket.gethostbyname(HOST)
 PORT = 9527
+data = {"Addr": Addr,
+        "PORT":PORT }
 
 class SingleTCPHandler(socketserver.BaseRequestHandler):
     "One instance per connection.  Override handle(self) to customize action."
@@ -36,6 +38,9 @@ class SimpleServer(socketserver.ThreadingMixIn, socketserver.TCPServer):
 if __name__ == "__main__":
     server = SimpleServer((HOST, PORT), SingleTCPHandler)
     print(f'Listening on {Addr} port {PORT}')
+    with open('server_settings.json', 'w') as f:
+        json.dump(data, f)
+        print('Dumped server addr:port to server_settings.json')
     # terminate with Ctrl-C
     try:
         server.serve_forever()
