@@ -1,7 +1,8 @@
 import socket
 from IPy import IP
 
-#Asks user to select an IP, address as source for broadcasting.
+#Asks user to select an IP address to listen for broadcasted messages.
+
 
 def selectInterface():
     interfaces = socket.getaddrinfo(host=socket.gethostname(), port=None, family=socket.AF_INET)
