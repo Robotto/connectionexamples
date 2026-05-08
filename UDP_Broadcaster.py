@@ -1,6 +1,6 @@
 import socket
 
-#Asks user to select an IP address to listen for broadcasted messages.
+#Asks user to select an IP, address as source for broadcasting.
 
 def selectInterface():
     interfaces = socket.getaddrinfo(host=socket.gethostname(), port=None, family=socket.AF_INET)
